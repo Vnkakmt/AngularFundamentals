@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-assignment',
@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignmentComponent implements OnInit {
 
-  isFav:boolean = false;
-  inputField:string = "";
+  @Input() isFav:boolean = false;
+  @Output() change = new EventEmitter();
   constructor(){
 
   }
@@ -19,6 +19,7 @@ export class AssignmentComponent implements OnInit {
 
   onClick(){
     this.isFav = !this.isFav;
+    this.change.emit();
   }
 
 }

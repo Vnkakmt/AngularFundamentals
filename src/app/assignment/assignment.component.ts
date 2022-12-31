@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class AssignmentComponent implements OnInit {
 
-  @Input() isFav:boolean = false;
+  @Input('isFav') isSelected:boolean = false;
   @Output() change = new EventEmitter();
   constructor(){
 
@@ -18,7 +18,7 @@ export class AssignmentComponent implements OnInit {
   }
 
   onClick(){
-    this.isFav = !this.isFav;
+    this.isSelected = !this.isSelected;
     this.change.emit();
   }
 

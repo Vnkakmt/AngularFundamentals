@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class AssignmentComponent implements OnInit {
 
   isFav:boolean = false;
+  inputField:string = "";
   constructor(){
 
   }
+  
   ngOnInit(){
 
   }

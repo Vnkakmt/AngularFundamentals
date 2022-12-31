@@ -11,6 +11,7 @@ import { AuthorsService } from './authors.service';
 import { FormsModule } from '@angular/forms';
 import { SummaryPipe } from './summary.pipe';
 import { AssignmentComponent } from './assignment/assignment.component';
+import { assignmentPipe } from './assignment.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AssignmentComponent } from './assignment/assignment.component';
     CourseComponent,
     AuthorsComponent,
     SummaryPipe,
+    assignmentPipe,
     AssignmentComponent
   ],
   imports: [

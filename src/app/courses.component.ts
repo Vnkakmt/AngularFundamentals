@@ -15,6 +15,7 @@ export class CoursesComponent{
         console.log("Div is called")
     }
     onSave($event:any){
+        $event.stopPropagation();
         console.log("Button was clicked", $event);
     }
 

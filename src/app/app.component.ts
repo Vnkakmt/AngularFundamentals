@@ -7,5 +7,5 @@ import { FavoriteChangedEventArgs } from './assignment/assignment.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses = [];
+  viewMode='somethingElse';
 }

@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './assignment.component.html',
   styleUrls: ['./assignment.component.css'],
   //use below  if line is less for styling
-  // using the below styles makes angular prioritise it first the the .css file
+  // whichever is at the bottom style or styleUrls prioritise it first the the .css file
   styles: [
     `
     .test {

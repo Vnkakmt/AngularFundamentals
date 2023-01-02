@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { SummaryPipe } from './summary.pipe';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { assignmentPipe } from './assignment.pipe';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { assignmentPipe } from './assignment.pipe';
     AuthorsComponent,
     SummaryPipe,
     assignmentPipe,
-    AssignmentComponent
+    AssignmentComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,

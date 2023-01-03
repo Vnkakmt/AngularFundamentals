@@ -14,6 +14,7 @@ import { AssignmentComponent } from './assignment/assignment.component';
 import { assignmentPipe } from './assignment.pipe';
 import { PanelComponent } from './panel/panel.component';
 import { InputFormatDirective } from './input-format.directive';
+import { ZippyComponent } from './zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { InputFormatDirective } from './input-format.directive';
     assignmentPipe,
     AssignmentComponent,
     PanelComponent,
-    InputFormatDirective
+    InputFormatDirective,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,

@@ -7,24 +7,18 @@ import { FavoriteChangedEventArgs } from './assignment/assignment.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses = [
-    {id:1, name:'course1'},
-    {id:2, name:'course2'},
-    {id:3, name:'course3'},
-  ];
+  courses:any;
 
-  onAdd(){
-    this.courses.push({id:4, name: 'course4'})
+  loadCourses(){
+    this.courses = [
+      {id:1, name:'course1'},
+      {id:2, name:'course2'},
+      {id:3, name:'course3'},
+    ];
   }
 
-  onRemove(course:any){
-    let index = this.courses.indexOf(course);
-    this.courses.splice(index);
+  trackCourse(index:any, course:any){
+    return course ? course.id : undefined;
   }
-  
-  onChange(course:any){
-    course.name = 'updated';
-  }
-  
 
 }

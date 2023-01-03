@@ -1,0 +1,12 @@
+Reactive forms:- 
+
+1. More control over validation logic
+2. Good for complex forms
+3. unit testable
+
+Template-driven forms:-
+
+1. Good for simple forms
+2. Simple validation
+3. Easier to create
+4. Less code

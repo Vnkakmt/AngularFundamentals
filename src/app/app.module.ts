@@ -13,6 +13,7 @@ import { SummaryPipe } from './summary.pipe';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { assignmentPipe } from './assignment.pipe';
 import { PanelComponent } from './panel/panel.component';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PanelComponent } from './panel/panel.component';
     SummaryPipe,
     assignmentPipe,
     AssignmentComponent,
-    PanelComponent
+    PanelComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,37 @@
+<form #f="ngForm" (ngSubmit)="submit(f.value)">
+<div ngModelGroup="instructor" #instructor="ngModelGroup">
+
+ <div class="form-group">
+    <label>Course Name</label>
+    <input 
+    required minlength ='3' maxlength="5" 
+    ngModel name="courseName" #courseName="ngModel" 
+    class="form-control" type="text">
+    <div class="alert alert-danger" *ngIf="courseName.touched && !courseName.valid">
+        <div *ngIf="courseName.errors?.['required']">Please enter a valid course name</div>
+        <div *ngIf="courseName.errors?.['minlength']">Course name should be minimum of {{courseName.errors?.['minlength'].requiredLength}} characters</div>
+        <div *ngIf="courseName.errors?.['maxlength']">Course name should be maximum of {{courseName.errors?.['maxlength'].requiredLength}} characters</div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="courseType"> Course Type</label>
+        <select required ngModel name="category" #category="ngModel" id="category" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let cT of courseType" [ngValue]="cT.id">{{cT.name}}</option>
+        </select>
+        <div *ngIf="category.touched && category.invalid" class="alert alert-danger">
+            Category field is required
+        </div>
+</div>
+<div class="checkbox">
+    <label for="moneyBackGuarantee">
+        <input ngModel name="hasGuarantee" #hasGuarantee="ngModel" [value]="hasGuarantee" type="checkbox"> 
+        30-day money-back guarantee?
+    </label>
+</div>
+</div>
+{{f.value | json}}
+<br>
+<button class="btn btn-primary" [disabled]="!f.valid">Create</button>
+
+</form>

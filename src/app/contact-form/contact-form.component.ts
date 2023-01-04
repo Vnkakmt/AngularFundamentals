@@ -11,6 +11,6 @@ log(x:any){
 }
 
 submit(x:any){
-  console.log(x.value);
+  console.log(x);
 }
 }

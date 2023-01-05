@@ -8,7 +8,7 @@ import { CourseComponent } from './course/course.component';
 import { CoursesService } from './courses.service';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './authors.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SummaryPipe } from './summary.pipe';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { assignmentPipe } from './assignment.pipe';
@@ -17,6 +17,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { UdemyInstructorComponent } from './udemy-instructor/udemy-instructor.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,12 @@ import { UdemyInstructorComponent } from './udemy-instructor/udemy-instructor.co
     InputFormatDirective,
     ZippyComponent,
     ContactFormComponent,
-    UdemyInstructorComponent
+    UdemyInstructorComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, FormsModule
+    AppRoutingModule, FormsModule, ReactiveFormsModule
   ],
   providers: [
     CoursesService,

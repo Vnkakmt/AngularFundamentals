@@ -8,16 +8,15 @@ export class UsernameValidators {
         return null;
         }
 
-    static shouldBeUnique(control: AbstractControl) : ValidationErrors | null{
-        setTimeout(()=> {
-            if(control.value == 'mosh')
-        return { shouldBeUnique : true}
-
-        return null;
-            //console.log('0k')
-        }, 2000);
-
-        return null;
-        
+    static shouldBeUnique(control: AbstractControl) : Promise<ValidationErrors | null>{ //return type of ths function is a promise
+        return new Promise((resolve, reject) =>{ 
+            setTimeout(() => {
+                if(control.value == 'mosh')
+                resolve ({ shouldBeUnique : true})
+            else 
+                resolve(null);
+                //console.log('0k')
+            }, 2000);
+        });
     }
 }

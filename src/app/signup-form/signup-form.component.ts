@@ -10,20 +10,18 @@ import { UsernameValidators } from './username.validators';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    username: new FormControl('',[
-    Validators.required,
-    Validators.minLength(3),
-    UsernameValidators.cannotContainSpace
-  ],
-  UsernameValidators.shouldBeUnique),
-    password: new FormControl('',Validators.required)
+    account : new FormGroup({
+      username: new FormControl(''),
+      password: new FormControl('')
+    })
+
   });
 
-  login(){
-    this.form.setErrors({
-      invalidLogin: true
-    });
-  }
+  // login(){
+  //   this.form.setErrors({
+  //     invalidLogin: true
+  //   });
+  // }
   //if we had an auth service
   // login(){
   //  let isValid = AuthService.login(this.form.value)
@@ -35,6 +33,6 @@ export class SignupFormComponent {
   //  }
   // }
 
-  get username() { return this.form.get('username'); }
-  get password() { return this.form.get('password'); }
+  get username() { return this.form.get('account.username'); }
+  get password() { return this.form.get('account.password'); }
 }

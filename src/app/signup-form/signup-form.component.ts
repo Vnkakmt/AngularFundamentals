@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthorsService } from '../authors.service';
 import { UsernameValidators } from './username.validators';
 
 @Component({
@@ -17,6 +18,22 @@ export class SignupFormComponent {
   UsernameValidators.shouldBeUnique),
     password: new FormControl('',Validators.required)
   });
+
+  login(){
+    this.form.setErrors({
+      invalidLogin: true
+    });
+  }
+  //if we had an auth service
+  // login(){
+  //  let isValid = AuthService.login(this.form.value)
+  //  if(!isValid){
+  //   this.form.setErrors({
+  //     invalidLogin:true
+  //   })
+  //   }
+  //  }
+  // }
 
   get username() { return this.form.get('username'); }
   get password() { return this.form.get('password'); }

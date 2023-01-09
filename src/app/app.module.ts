@@ -20,6 +20,8 @@ import { UdemyInstructorComponent } from './udemy-instructor/udemy-instructor.co
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { AssignmentReactiveformsComponent } from './assignment-reactiveforms/assignment-reactiveforms.component';
+import { PostsComponent } from './posts/posts.component';
+import{HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -37,11 +39,12 @@ import { AssignmentReactiveformsComponent } from './assignment-reactiveforms/ass
     UdemyInstructorComponent,
     SignupFormComponent,
     NewCourseComponent,
-    AssignmentReactiveformsComponent
+    AssignmentReactiveformsComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, FormsModule, ReactiveFormsModule
+    AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
   providers: [
     CoursesService,

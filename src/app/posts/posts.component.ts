@@ -18,7 +18,11 @@ constructor(private service:PostService){
    .subscribe(response => {
     console.log(JSON.parse(JSON.stringify(response)));
     this.posts = JSON.parse(JSON.stringify(response));
-})
+  }, 
+  (error) => {
+    alert('an unexpected error occured.');
+    console.log(error);
+  })
   }
 
 createPost(input:HTMLInputElement){
@@ -31,6 +35,10 @@ createPost(input:HTMLInputElement){
     this.posts.splice(0,0,post);
     console.log(response);
     //console.log(JSON.parse(JSON.stringify(response)));
+  },
+  (error)=> {
+    alert("unexpected error occurred");
+    console.log(error);
   })
 }
 
@@ -39,15 +47,24 @@ updatePost(post:HTMLInputElement){
   this.service.updatePost(post)
   .subscribe(response =>{
     console.log(response);
-  })
+  }, 
+  (error) => {
+    alert("unexpected error occurred");
+    console.log(error);
+  });
   //this.http.put(this.url, JSON.stringify({isRead:true}))
 }
 
 deletePost(post:HTMLInputElement){
   this.service.deletePost(post.id)
-  .subscribe(response => {
+  .subscribe(
+    response => {
     let index = this.posts.indexOf(post);
     this.posts.splice(index,1);
+  }, 
+  (error) => {
+    alert("unexpected error occurred");
+    console.log(error);
   })
 }
 

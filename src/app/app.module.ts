@@ -22,6 +22,7 @@ import { NewCourseComponent } from './new-course/new-course.component';
 import { AssignmentReactiveformsComponent } from './assignment-reactiveforms/assignment-reactiveforms.component';
 import { PostsComponent } from './posts/posts.component';
 import{HttpClientModule} from '@angular/common/http'
+import { PostService } from 'src/services/post.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import{HttpClientModule} from '@angular/common/http'
     AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
   providers: [
+    PostService,
     CoursesService,
     AuthorsService
   ],

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,7 @@ import { AssignmentReactiveformsComponent } from './assignment-reactiveforms/ass
 import { PostsComponent } from './posts/posts.component';
 import{HttpClientModule} from '@angular/common/http'
 import { PostService } from 'src/services/post.service';
+import { AppErrorHandler } from './app-error-handler';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PostService } from 'src/services/post.service';
   providers: [
     PostService,
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    {provide:ErrorHandler, useClass:AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 })

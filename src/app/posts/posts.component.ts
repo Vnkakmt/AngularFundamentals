@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NotFoundError } from 'rxjs';
 import { PostService } from 'src/services/post.service';
+import { AppError } from '../app-error';
+import { badinput } from '../bad-input';
 
 @Component({
   selector: 'posts',
@@ -18,11 +21,7 @@ constructor(private service:PostService){
    .subscribe(response => {
     console.log(JSON.parse(JSON.stringify(response)));
     this.posts = JSON.parse(JSON.stringify(response));
-  }, 
-  (error) => {
-    alert('an unexpected error occured.');
-    console.log(error);
-  })
+  });
   }
 
 createPost(input:HTMLInputElement){
@@ -36,14 +35,11 @@ createPost(input:HTMLInputElement){
     console.log(response);
     //console.log(JSON.parse(JSON.stringify(response)));
   },
-  (error:Response)=> {
-    if(error.status == 400){
-   // this.form.setErrors(error.json());
+  (error:AppError)=> {
+    if(error instanceof badinput){
+   // this.form.setErrors(error.originalError);
     }
-    else{
-      alert("unexpected error occurred");
-      console.log(error);
-    }
+    else throw error;
   })
 }
 
@@ -52,10 +48,6 @@ updatePost(post:HTMLInputElement){
   this.service.updatePost(post)
   .subscribe(response =>{
     console.log(response);
-  }, 
-  (error) => {
-    alert("unexpected error occurred");
-    console.log(error);
   });
   //this.http.put(this.url, JSON.stringify({isRead:true}))
 }
@@ -67,15 +59,27 @@ deletePost(post:HTMLInputElement){
     let index = this.posts.indexOf(post);
     this.posts.splice(index,1);
   }, 
-  (error:Response) => {
-    if(error.status === 404)
+  (error:AppError) => {
+    if(error instanceof NotFoundError)
     alert('this post has already been deleted.');
-    else{
-      alert("unexpected error occurred");
-      console.log(error);
-    }
+    else throw error;
   })
 }
+
+deletePostTest(post:HTMLInputElement){
+  this.service.deletePostTest(post.id)
+  .subscribe(
+    response => {
+    let index = this.posts.indexOf(post);
+    this.posts.splice(index,1);
+  }, 
+  (error:AppError) => {
+    if(error instanceof NotFoundError)
+    alert('this post has already been deleted.');
+    else throw error;
+  })
+}
+
 
 }
 

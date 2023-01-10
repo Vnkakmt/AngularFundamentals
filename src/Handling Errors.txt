@@ -1,0 +1,4 @@
+2 types of error:
+
+1. Unexpected :- Server offline, Network is down, unhandled exceptions
+2. Expected :- Not found errors (404), Bad request (400)

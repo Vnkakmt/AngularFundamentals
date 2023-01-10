@@ -30,5 +30,16 @@ createPost(input:HTMLInputElement){
     //console.log(JSON.parse(JSON.stringify(response)));
   })
 }
+
+updatePost(post:HTMLInputElement){
+
+  this.http.patch(this.url +'/'+ post.id, JSON.stringify({isRead:true}))
+  .subscribe(response =>{
+    console.log(response);
+  })
+  //this.http.put(this.url, JSON.stringify({isRead:true}))
+}
+
+
 }
 

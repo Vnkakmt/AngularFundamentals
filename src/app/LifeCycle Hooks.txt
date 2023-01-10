@@ -1,0 +1,16 @@
+When Angular 
+
+1. Creates a component
+2. Renders item
+3. Creates and renders its children
+4. Destroys a component
+
+These are examples of Life cycle events, at this point Angular will call specific component if they are defined.
+
+There are multiple Life cycle hooks in Angular 
+1. OnInit
+2. OnChanges
+3. DoCheck
+4. AfterContentInit
+...
+

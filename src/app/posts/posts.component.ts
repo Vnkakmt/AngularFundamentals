@@ -36,9 +36,14 @@ createPost(input:HTMLInputElement){
     console.log(response);
     //console.log(JSON.parse(JSON.stringify(response)));
   },
-  (error)=> {
-    alert("unexpected error occurred");
-    console.log(error);
+  (error:Response)=> {
+    if(error.status == 400){
+   // this.form.setErrors(error.json());
+    }
+    else{
+      alert("unexpected error occurred");
+      console.log(error);
+    }
   })
 }
 
@@ -62,9 +67,13 @@ deletePost(post:HTMLInputElement){
     let index = this.posts.indexOf(post);
     this.posts.splice(index,1);
   }, 
-  (error) => {
-    alert("unexpected error occurred");
-    console.log(error);
+  (error:Response) => {
+    if(error.status === 404)
+    alert('this post has already been deleted.');
+    else{
+      alert("unexpected error occurred");
+      console.log(error);
+    }
   })
 }
 

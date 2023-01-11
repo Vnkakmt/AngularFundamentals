@@ -18,10 +18,7 @@ constructor(private service:PostService){
 }
   ngOnInit() {
     this.service.getAll()
-   .subscribe(response => {
-    console.log(JSON.parse(JSON.stringify(response)));
-    this.posts = JSON.parse(JSON.stringify(response));
-  });
+   .subscribe(response => this.posts = response);
   }
 
 createPost(input:HTMLInputElement){
@@ -29,11 +26,9 @@ createPost(input:HTMLInputElement){
   input.value = '';
 
   this.service.create(post)
-  .subscribe(response => {
-    post['id'] = JSON.parse(JSON.stringify(response)).id;
+  .subscribe(newpost => {
+    post['id'] = JSON.parse(JSON.stringify(newpost)).id;
     this.posts.splice(0,0,post);
-    console.log(response);
-    //console.log(JSON.parse(JSON.stringify(response)));
   },
   (error:AppError)=> {
     if(error instanceof badinput){
@@ -55,7 +50,7 @@ updatePost(post:HTMLInputElement){
 deletePost(post:HTMLInputElement){
   this.service.delete(post.id)
   .subscribe(
-    response => {
+    () => {
     let index = this.posts.indexOf(post);
     this.posts.splice(index,1);
   }, 
@@ -69,7 +64,7 @@ deletePost(post:HTMLInputElement){
 deletePostTest(post:HTMLInputElement){
   this.service.deletePostTest(post.id)
   .subscribe(
-    response => {
+    () => {
     let index = this.posts.indexOf(post);
     this.posts.splice(index,1);
   }, 

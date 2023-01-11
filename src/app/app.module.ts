@@ -31,6 +31,7 @@ import { GithubFollowersService } from 'src/services/github-followers.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,29 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule
+    AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule,
+    RouterModule.forRoot([
+      { 
+        path:'',
+        component:HomeComponent
+      },
+      { 
+        path:'followers/:username',
+        component:GithubProfileComponent
+      },
+      { 
+        path:'followers',
+        component:GithubFollowersComponent
+      },
+      { 
+        path:'posts',
+        component:PostsComponent
+      },
+      { 
+        path:'**',
+        component:NotFoundComponent
+      },
+    ])
   ],
   providers: [
     PostService,

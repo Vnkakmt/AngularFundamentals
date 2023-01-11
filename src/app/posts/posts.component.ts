@@ -23,14 +23,18 @@ constructor(private service:PostService){
 
 createPost(input:HTMLInputElement){
   let post: any = {title:input.value}
+  this.posts.splice(0,0,post); //optimistic update:- before server confirms creation
+
   input.value = '';
 
   this.service.create(post)
   .subscribe(newpost => {
     post['id'] = JSON.parse(JSON.stringify(newpost)).id;
-    this.posts.splice(0,0,post);
+    //this.posts.splice(0,0,post); //pessimistic updatet:- after server confirms creation
   },
   (error:AppError)=> {
+    this.posts.splice(0,1); //remove if optimistic update fails
+
     if(error instanceof badinput){
    // this.form.setErrors(error.originalError);
     }
@@ -48,13 +52,21 @@ updatePost(post:HTMLInputElement){
 }
 
 deletePost(post:HTMLInputElement){
+  let index = this.posts.indexOf(post);
+    this.posts.splice(index,1);
+
   this.service.delete(post.id)
   .subscribe(
     () => {
-    let index = this.posts.indexOf(post);
-    this.posts.splice(index,1);
-  }, 
+      console.log('inside delete')
+    //let index = this.posts.indexOf(post);
+    //this.posts.splice(index,1);
+  }
+  ,
   (error:AppError) => {
+    console.log('inside error:-')
+    this.posts.splice(index,0,post);
+
     if(error instanceof NotFoundError)
     alert('this post has already been deleted.');
     else throw error;

@@ -18,14 +18,16 @@ export class DataService {
   }
 
   create(resource:any){
-    return this.http.post(this.url, JSON.stringify(resource))
-    .pipe(
-        map(response => JSON.parse(JSON.stringify(response))),
-      catchError((error:Response)=>{
-        this.handleError;
-        return throwError(()=> new AppError(error));
-      })
-    );
+    return throwError(()=> new AppError('error')); //throw error purposefully
+
+    // return this.http.post(this.url, JSON.stringify(resource))
+    // .pipe(
+    //     map(response => JSON.parse(JSON.stringify(response))),
+    //   catchError((error:Response)=>{
+    //     this.handleError;
+    //     return throwError(()=> new AppError(error));
+    //   })
+    // );
   }
 
   update(resource:any){
@@ -37,13 +39,16 @@ export class DataService {
   }
 
   delete(id:any){
-    return this.http.delete(this.url + '/'+ id)
-    .pipe(
-        map(response => JSON.parse(JSON.stringify(response))),
-      catchError(this.handleError))
+    return throwError(()=> new AppError('Error'));
+
+    // return this.http.delete(this.url + '/'+ id)
+    // .pipe(
+    //     map(response => JSON.parse(JSON.stringify(response))),
+    //   catchError(this.handleError))
     }
 
     deletePostTest(id:any){
+
       return this.http.delete(this.wrongUrl + '/'+ id)
       .pipe(
         map(response => JSON.parse(JSON.stringify(response))),

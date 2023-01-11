@@ -17,7 +17,7 @@ constructor(private service:PostService){
 
 }
   ngOnInit() {
-    this.service.getPosts()
+    this.service.getAll()
    .subscribe(response => {
     console.log(JSON.parse(JSON.stringify(response)));
     this.posts = JSON.parse(JSON.stringify(response));
@@ -28,7 +28,7 @@ createPost(input:HTMLInputElement){
   let post: any = {title:input.value}
   input.value = '';
 
-  this.service.createPost(post)
+  this.service.create(post)
   .subscribe(response => {
     post['id'] = JSON.parse(JSON.stringify(response)).id;
     this.posts.splice(0,0,post);
@@ -45,7 +45,7 @@ createPost(input:HTMLInputElement){
 
 updatePost(post:HTMLInputElement){
 
-  this.service.updatePost(post)
+  this.service.update(post)
   .subscribe(response =>{
     console.log(response);
   });
@@ -53,7 +53,7 @@ updatePost(post:HTMLInputElement){
 }
 
 deletePost(post:HTMLInputElement){
-  this.service.deletePost(post.id)
+  this.service.delete(post.id)
   .subscribe(
     response => {
     let index = this.posts.indexOf(post);

@@ -1,0 +1,7 @@
+*) Observables are lazy
+
+i.e when you make a http call if you dont subscribe to the observable it eil not be deleted
+
+*) Promises are eager
+
+i.e when you make a promise the http call is executed

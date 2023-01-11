@@ -52,25 +52,8 @@ updatePost(post:HTMLInputElement){
 }
 
 deletePost(post:HTMLInputElement){
-  let index = this.posts.indexOf(post);
-    this.posts.splice(index,1);
-
-  this.service.delete(post.id)
-  .subscribe(
-    () => {
-      console.log('inside delete')
-    //let index = this.posts.indexOf(post);
-    //this.posts.splice(index,1);
-  }
-  ,
-  (error:AppError) => {
-    console.log('inside error:-')
-    this.posts.splice(index,0,post);
-
-    if(error instanceof NotFoundError)
-    alert('this post has already been deleted.');
-    else throw error;
-  })
+  this.service.delete(post.id) // if you dont subscribe to observable the http call to delete is not made
+  .subscribe(); //after you sbscribe it will http call to delete will be made
 }
 
 deletePostTest(post:HTMLInputElement){

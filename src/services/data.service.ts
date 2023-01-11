@@ -39,12 +39,12 @@ export class DataService {
   }
 
   delete(id:any){
-    return throwError(()=> new AppError('Error'));
+    //return throwError(()=> new AppError('Error'));
 
-    // return this.http.delete(this.url + '/'+ id)
-    // .pipe(
-    //     map(response => JSON.parse(JSON.stringify(response))),
-    //   catchError(this.handleError))
+    return this.http.delete(this.url + '/'+ id)
+    .pipe(
+        map(response => JSON.parse(JSON.stringify(response))),
+      catchError(this.handleError))
     }
 
     deletePostTest(id:any){

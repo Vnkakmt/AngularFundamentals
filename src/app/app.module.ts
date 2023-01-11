@@ -54,6 +54,7 @@ import { GithubFollowersComponent } from './github-followers/github-followers.co
     HomeComponent,
     NavbarComponent,
     GithubProfileComponent,
+    GithubFollowersComponent,
     NotFoundComponent,
     FollowersComponent
   ],

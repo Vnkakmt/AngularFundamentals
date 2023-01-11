@@ -24,6 +24,13 @@ import { PostsComponent } from './posts/posts.component';
 import{HttpClientModule} from '@angular/common/http'
 import { PostService } from 'src/services/post.service';
 import { AppErrorHandler } from './app-error-handler';
+import { FollowersComponent } from './followers/followers.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { GithubFollowersService } from 'src/services/github-followers.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -42,7 +49,12 @@ import { AppErrorHandler } from './app-error-handler';
     SignupFormComponent,
     NewCourseComponent,
     AssignmentReactiveformsComponent,
-    PostsComponent
+    PostsComponent,
+    HomeComponent,
+    NavbarComponent,
+    GithubProfileComponent,
+    NotFoundComponent,
+    FollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +64,7 @@ import { AppErrorHandler } from './app-error-handler';
     PostService,
     CoursesService,
     AuthorsService,
+    GithubFollowersService,
     {provide:ErrorHandler, useClass:AppErrorHandler}
   ],
   bootstrap: [AppComponent]

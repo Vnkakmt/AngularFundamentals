@@ -11,12 +11,20 @@ export class GithubProfileComponent implements OnInit {
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap
-    .subscribe(params =>{
-      console.log(params);
-      let id = params.get('id');
-      console.log(id);
-    })
+    
+    //WHEN USER MAY CHOOSE TO NAVIGATE TO OTHER PAGE AND NEED NOT RETURN BACK REINITALIZE THE COMPONENT EVERY TIME
+    let id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+
+    console.log("GitHub profile oninit")
+    //WHEN USER MAY CHOOSE TO GO BACK AND FORTH THROUGH PAGES, COMPONENTS NEED TO BE INITIALIZED EVERY TIME
+
+    // this.route.paramMap
+    // .subscribe(params =>{
+    //   console.log(params.get('id'));
+      //let id = params.get('id');
+      //console.log(id);
+    //})
   }
 
 }
